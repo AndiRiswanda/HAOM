@@ -1,0 +1,152 @@
+/* LoginStyle.css */
+
+.root {
+    -fx-font-family: 'Arial';
+    -fx-background-color: #212121; /* Dark background */
+}
+
+.login-text {
+    -fx-font-size: 17pt; /* Adjust the font size as needed */
+    -fx-font-family: "Impact"; /* Specify font family */
+    -fx-fill: #333333; /* Set text color */
+    -fx-font-weight: bold; /* Set font weight */
+    -fx-text-alignment: center; /* Set text alignment */
+}
+
+.register-text {
+    -fx-font-size: 17pt; /* Adjust the font size as needed */
+    -fx-font-family: "Impact"; /* Specify font family */
+    -fx-fill: #333333; /* Set text color */
+    -fx-font-weight: bold; /* Set font weight */
+    -fx-translate-y: -30;    
+}
+
+ .haom-text-1 {
+    -fx-font-size: 30pt; /* Adjust the font size as needed */
+    -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
+    -fx-font-family: "Impact"; /* Specify font family */
+    -fx-fill: #6a0dad; /* Set text color */    
+    -fx-font-weight: bold; /* Set font weight */
+}
+.haom-text-2 {
+    -fx-font-size: 17pt; /* Adjust the font size as needed */
+    -fx-font-family: "Copperplate"; /* Specify font family */
+    -fx-fill: #6a0dad; /* Set text color */    
+    -fx-font-weight: bold; /* Set font weight */
+    -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
+}
+
+.haom-text-3 {
+    -fx-font-size: 17pt; /* Adjust the font size as needed */
+    -fx-font-family: "Copperplate"; /* Specify font family */
+    -fx-fill: #6a0dad; /* Set text color */    
+    -fx-font-weight: bold; /* Set font weight */
+    -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
+}
+
+.welcomeUser-text-1 {
+    -fx-font-size: 27pt; /* Adjust the font size as needed */
+    -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
+    -fx-font-family: "Copperplate"; /* Specify font family */
+    -fx-fill: #6a0dad; /* Set text color */    
+    -fx-font-weight: bold; /* Set font weight */
+}
+
+.register-text {
+    -fx-font-size: 18pt; /* Adjust the font size as needed */
+    -fx-font-family: "Impact"; /* Specify font family */
+    -fx-fill: #333333; /* Set text color */
+    -fx-font-weight: bold; /* Set font weight */
+    -fx-text-alignment: center; /* Set text alignment */
+}
+
+
+.label {
+    -fx-font-size: 19px;
+    -fx-font-family: "Copperplate";
+    -fx-font-weight: bold;
+    -fx-text-fill: #d3d3d3; /* Light gray text */
+}
+
+.username-label-register, .email-label-register, .password-label-register {
+    -fx-font-size: 19px;
+    -fx-font-family: "Copperplate";
+    -fx-font-weight: bold;
+    -fx-text-fill: #d3d3d3; /* Light gray text */
+}
+
+.text-field {
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+    -fx-background-color: #4b4b4b; /* Darker background for text field */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-border-width: 1px;
+    -fx-border-color: transparent; /* Transparent border */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px; /* Add padding to make room for glow effect */
+}
+
+
+.text-field:focused {
+    -fx-font-family: "Copperplate";
+    -fx-border-color: #9a4bff; /* Purple border when focused */
+    -fx-border-width: 2px;
+}
+
+
+.button {
+    -fx-font-family: "Copperplate";
+    -fx-background-color: #6a0dad; /* Purple background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+
+    -fx-transition-duration: 0.2s; /* Animation duration */
+    -fx-cursor: hand; /* Change cursor to hand on hover */
+}
+
+.button:hover {
+    -fx-background-color: #54078b;; /* Lighter purple on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #4a148c; /* Darker purple on press */
+}
+
+.login-register-link {
+    -fx-font-family: "Copperplate";
+    -fx-text-fill: #9a4bff; 
+    -fx-font-weight: bold;
+}
+
+#main-border-root {
+    -fx-background-color: #212121;
+    -fx-border-color: #0e0e0e;
+}
+
+.scroll-pane {
+    -fx-background: #2e2e2e;
+    -fx-border-color: #121212;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-padding: 20px;
+    
+}
+
+.btn1-main, .btn2-main, .btn3-main {
+    -fx-font-family: "Impact";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #6a0dad;
+
+}
+
+.btn1-main, .btn2-main, .btn3-main:hover {
+    -fx-background-color: #54078b;
+
+}
