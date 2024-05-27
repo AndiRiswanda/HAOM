@@ -1,0 +1,80 @@
+.root {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #FFD700;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar {
+    -fx-background-color: #FFD700;
+}
+
+.navbar .menu-bar {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .menu {
+    -fx-background-color: #FFD700;
+    -fx-padding: 0 20px;
+}
+
+.menu-item {
+    -fx-background-color: #FFD700;
+}
+
+.donate-btn {
+    background-color: #32CD32;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-title {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.hero-subtitle {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.text-content {
+    width: 50%;
+    text-align: left;
+}
+
+.heading {
+    color: #32CD32;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.paragraph {
+    margin-top: 5px;
+    font-size: 1em;
+}
+
+.image-content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
