@@ -25,10 +25,11 @@ public class DatabaseConnection {
     public static void createNewTable() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS users (\n"
-                + " id integer PRIMARY KEY,\n"
-                + " username text NOT NULL,\n"
-                + " email text NOT NULL,\n"
-                + " password text NOT NULL\n"
+                + " id INTEGER PRIMARY KEY,\n"
+                + " username TEXT NOT NULL,\n"
+                + " email TEXT NOT NULL,\n"
+                + " password TEXT NOT NULL,\n"
+                + " haomicpoint INTEGER DEFAULT 0\n"
                 + ");";
         
         try (Connection conn = connect();
