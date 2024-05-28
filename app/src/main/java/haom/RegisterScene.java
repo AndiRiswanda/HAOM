@@ -12,6 +12,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -19,7 +20,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+import javafx.stage.StageStyle;
 // Import UserController
 import controller.UserController;
 
@@ -27,6 +28,8 @@ public class RegisterScene {
 
     public static void showRegisterScreen(Stage mainStage) throws FileNotFoundException {
         // UI Elements
+
+        
         Label usernameLabel = new Label("Pick a Username :");
         usernameLabel.getStyleClass().add("username-label-register");
         TextField usernameField = new TextField();
@@ -45,13 +48,14 @@ public class RegisterScene {
             String email = emailField.getText();
             String password = passwordField.getText();
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                showAlert(AlertType.ERROR, "Form Error!", "Please fill in all fields.");
+                CustomAlert.showCustomAlert(AlertType.ERROR, "Form Error!", "Please fill in all fields.");
             } else {
                 boolean success = UserController.registerUser(username, email, password);
                 if (success) {
-                    showAlert(AlertType.INFORMATION, "Registration Successful", "User registered successfully!");
+                    CustomAlert.showCustomAlert(AlertType.INFORMATION, "Registration Successful", "User registered successfully!");
+                    LoginScene.showLoginScreen(mainStage);
                 } else {
-                    showAlert(AlertType.ERROR, "Registration Failed", "An error occurred while registering the user.");
+                    CustomAlert.showCustomAlert(AlertType.ERROR, "Registration Failed", "An error occurred while registering the user.");
                 }
             }
         });
@@ -100,6 +104,16 @@ public class RegisterScene {
         rectangle.setStrokeWidth(17);
         rectangle.setFill(Color.TRANSPARENT);
 
+
+        Button exitButton = new Button("Exit");
+        exitButton.setOnAction(e -> Platform.exit());
+        exitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
+
+        HBox exitButtonBox = new HBox(exitButton);
+        exitButtonBox.setAlignment(Pos.BOTTOM_RIGHT);
+        exitButtonBox.setPadding(new Insets(10));
+
+
         Circle circle1 = new Circle(250, Color.web("#6a0dad")); // Create purple circle
         Circle circle2 = new Circle(250, Color.web("#6a0dad")); // Create purple circle
         Circle circle3 = new Circle(150, Color.web("#6a0dad")); // Create purple circle
@@ -114,7 +128,7 @@ public class RegisterScene {
         loginLink.getStyleClass().add("login-register-link"); 
         // StackPane for Layering (background, form, images, text)
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, registerBox, imageView1, registerText, circle1, circle2, circle3, alreadyHaveAnAccount, loginLink);
+        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, registerBox, imageView1, registerText, circle1, circle2, circle3, alreadyHaveAnAccount, loginLink,exitButton);
         // ... (Set margins for elements in StackPane as needed)
         StackPane.setMargin(haomText1, new Insets(0, 1250, 720, 0));
         StackPane.setMargin(haomText2, new Insets(0, 1250, 660, 0));
@@ -127,7 +141,7 @@ public class RegisterScene {
         StackPane.setMargin(circle3, new Insets(390, 0, 280, -1300 - 60));
         StackPane.setMargin(alreadyHaveAnAccount, new Insets(450, 0, 0, 0)); 
         StackPane.setMargin(loginLink, new Insets(450, -110, 0, 0)); 
-        
+        StackPane.setMargin(exitButton, new Insets(550, -860, 0, 0)); 
         passwordField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -178,11 +192,4 @@ public class RegisterScene {
         mainStage.show();
     }
 
-    private static void showAlert(AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }

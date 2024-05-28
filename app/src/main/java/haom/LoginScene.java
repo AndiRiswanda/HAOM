@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -31,6 +32,7 @@ import javafx.stage.Stage;
 public class LoginScene {
     
     static void showLoginScreen(Stage mainStage) {
+
         // Create UI elements
         Label usernameLabel = new Label("Username :");
         TextField usernameField = new TextField();
@@ -67,14 +69,11 @@ public class LoginScene {
                 }
             } else {
                 // Display error message if login is invalid
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Login Failed");
-                alert.setHeaderText(null);
-                alert.setContentText("Invalid username or password");
-                alert.showAndWait();
+                CustomAlert.showCustomAlert(AlertType.ERROR, "Login Failed", "Invalid username or password");
+
             }
         });
-
+ 
         // Load images
         Image haomIcon = new Image(LoginScene.class.getResourceAsStream("/PicAsset/charHaomOpen.png"));
         ImageView imageView1 = new ImageView(haomIcon);
@@ -125,10 +124,17 @@ public class LoginScene {
             }
         });
         registerLink.getStyleClass().add("login-register-link");
+        Button exitButton = new Button("Exit");
+        exitButton.setOnAction(e -> Platform.exit());
+        exitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
 
+        HBox exitButtonBox = new HBox(exitButton);
+        exitButtonBox.setAlignment(Pos.BOTTOM_RIGHT);
+        exitButtonBox.setPadding(new Insets(10));
+        
         // StackPane to stack the loginBox and rectangle
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, loginBox, imageView1, loginText, circle1, circle2, circle3, dontHaveAccountText, registerLink);
+        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, loginBox, imageView1, loginText, circle1, circle2, circle3, dontHaveAccountText, registerLink,exitButton);
         StackPane.setMargin(haomText1, new Insets(0, 1250, 720, 0));
         StackPane.setMargin(haomText2, new Insets(0, 1250, 660, 0));
         StackPane.setMargin(rectangle, new Insets(140, 0, 0, 0));
@@ -140,6 +146,7 @@ public class LoginScene {
         StackPane.setMargin(circle3, new Insets(390, 0, 280, -1300 - 60));
         StackPane.setMargin(dontHaveAccountText, new Insets(400, 0, 0, 0));
         StackPane.setMargin(registerLink, new Insets(401, -100, 0, 0));
+        StackPane.setMargin(exitButton, new Insets(550, -860, 0, 0)); 
 
         passwordField.textProperty().addListener(new ChangeListener<String>() {
             @Override

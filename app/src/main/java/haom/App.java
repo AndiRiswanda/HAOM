@@ -5,7 +5,10 @@ import java.net.MalformedURLException;
 
 import config.DatabaseConnection;
 import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
     public static void main(String[] args) {
@@ -19,6 +22,8 @@ public class App extends Application {
         PrimaryStage.setHeight(630);
         PrimaryStage.setWidth(940);
         PrimaryStage.setResizable(false);
+        Image icon = new Image(getClass().getResourceAsStream("/PicAsset/Icon.png"));
+        PrimaryStage.getIcons().add(icon);
         LoginScene.showLoginScreen(PrimaryStage);
     }
 

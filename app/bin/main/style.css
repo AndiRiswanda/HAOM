@@ -5,44 +5,6 @@
     -fx-background-color: #212121; /* Dark background */
 }
 
-
-.leaderboardstyle {
-    -fx-background-color: #333333; /* Dark background color */
-    -fx-border-color: transparent; /* Remove border color */
-    -fx-border-width: 0px; /* Remove border width */
-    -fx-font-size: 27px; /* Increase font size */
-    -fx-font-family: 'Arial'; /* Specify font family */
-    -fx-padding: 10px 0px 10px 0px; /* Adjust padding */
-    -fx-focus-color: transparent; /* Remove focus color */
-    -fx-faint-focus-color: transparent; /* Remove faint focus color */
-    -fx-control-inner-background: #333333; /* Background color for inner content */
-    -fx-selection-bar: #6a0dad; /* Selection bar color */
-    -fx-cell-size: 40px; /* Increase cell size */
-}
-
-
-.list-view .scroll-bar:vertical {
-    -fx-opacity: 0; /* Hide vertical scroll bar */
-}
-
-.list-view .scroll-bar:horizontal {
-    -fx-opacity: 0; /* Hide horizontal scroll bar */
-}
-/* Style for hover effect */
-.list-cell:hover {
-    -fx-background-color: #6a0dad; /* Darker background color on hover */
-}
-
-/* Style for selected item */
-.list-cell:selected {
-    -fx-background-color: #6a0dad; /* Selection color */
-    -fx-text-fill: white; /* Text color for selected item */
-}
-
-
-
-
-
 .login-text {
     -fx-font-size: 17pt; /* Adjust the font size as needed */
     -fx-font-family: "Impact"; /* Specify font family */
@@ -89,13 +51,6 @@
     -fx-fill: #6a0dad; /* Set text color */    
     -fx-font-weight: bold; /* Set font weight */
 }
-
-.leaderboard-text {
-    -fx-font-size: 24px;
-    -fx-padding: 20px;
-    -fx-text-fill: #333333; /* Set label text color */
-}
-
 
 .register-text {
     -fx-font-size: 18pt; /* Adjust the font size as needed */
