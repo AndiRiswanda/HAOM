@@ -1,0 +1,35 @@
+/* style.css */
+#profile-title-label {
+    -fx-font-size: 24px;
+    -fx-padding: 20px;
+    -fx-text-fill: #4A90E2; /* Contoh: Warna teks */
+}
+
+#profile-image-view {
+    -fx-border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+    -fx-border-color: #4A90E2; /* Contoh: Warna border */
+    -fx-border-width: 2px;
+    -fx-translate-y: 90;
+}
+
+#change-image-button {
+    -fx-background-color: #4A90E2; /* Warna latar belakang */
+    -fx-text-fill: white; /* Warna teks */
+    -fx-font-size: 16px; /* Ukuran teks */
+}
+
+#back-button {
+    -fx-background-color: #D0021B; /* Warna latar belakang */
+    -fx-text-fill: white; /* Warna teks */
+    -fx-font-size: 16px; /* Ukuran teks */
+    -fx-padding: 10px 20px; /* Padding */
+}
+
+#profile-layout {
+    -fx-background-color: #F5F5F5; /* Warna latar belakang */
+    -fx-padding: 20px; /* Padding */
+}
+
+#profile-root {
+    -fx-background-color: #FFFFFF; /* Warna latar belakang */
+}
