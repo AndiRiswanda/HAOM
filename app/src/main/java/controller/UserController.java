@@ -27,7 +27,7 @@ public class UserController {
     }
 
     public static Map<String, String> getUserDetails(String username) {
-        String sql = "SELECT username, email FROM users WHERE username = ?";
+        String sql = "SELECT username, email, profile_image_path FROM users WHERE username = ?";
         Map<String, String> userDetails = new HashMap<>();
         try (Connection conn = DatabaseConnection.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -36,10 +36,38 @@ public class UserController {
             if (rs.next()) {
                 userDetails.put("username", rs.getString("username"));
                 userDetails.put("email", rs.getString("email"));
+                userDetails.put("profile_image_path", rs.getString("profile_image_path"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return userDetails;
+    }
+
+    public static String getProfileImagePath(String username) {
+        String sql = "SELECT profile_image_path FROM users WHERE username = ?";
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("profile_image_path");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public static void setProfileImagePath(String username, String imagePath) {
+        String sql = "UPDATE users SET profile_image_path = ? WHERE username = ?";
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, imagePath);
+            pstmt.setString(2, username);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

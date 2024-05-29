@@ -29,7 +29,8 @@ public class DatabaseConnection {
                 + " username TEXT NOT NULL,\n"
                 + " email TEXT NOT NULL,\n"
                 + " password TEXT NOT NULL,\n"
-                + " haomicpoint INTEGER DEFAULT 0\n"
+                + " haomicpoint INTEGER DEFAULT 0,\n"
+                + " profile_image_path TEXT DEFAULT '/PicAsset/userProfile.png'\n"
                 + ");";
         
         try (Connection conn = connect();
