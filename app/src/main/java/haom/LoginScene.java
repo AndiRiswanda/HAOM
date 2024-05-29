@@ -2,7 +2,6 @@ package haom;
 
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
-
 import config.DatabaseConnection;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -20,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -124,13 +122,10 @@ public class LoginScene {
             }
         });
         registerLink.getStyleClass().add("login-register-link");
+
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(e -> Platform.exit());
         exitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
-
-        HBox exitButtonBox = new HBox(exitButton);
-        exitButtonBox.setAlignment(Pos.BOTTOM_RIGHT);
-        exitButtonBox.setPadding(new Insets(10));
         
         // StackPane to stack the loginBox and rectangle
         StackPane stackPane = new StackPane();
@@ -142,11 +137,11 @@ public class LoginScene {
         StackPane.setMargin(imageView2, new Insets(0, 9, 269, 0));
         StackPane.setMargin(loginText, new Insets(0, 0, 330, -150));
         StackPane.setMargin(circle1, new Insets(900, 0, 330, -1025 - 60));
-        StackPane.setMargin(circle2, new Insets(0, 0, 530, 1400));
-        StackPane.setMargin(circle3, new Insets(390, 0, 280, -1300 - 60));
+        StackPane.setMargin(circle2, new Insets(0, 0, 530, 1000));
+        StackPane.setMargin(circle3, new Insets(390, 0, 280, -1000 - 60));
         StackPane.setMargin(dontHaveAccountText, new Insets(400, 0, 0, 0));
         StackPane.setMargin(registerLink, new Insets(401, -100, 0, 0));
-        StackPane.setMargin(exitButton, new Insets(550, -860, 0, 0)); 
+        StackPane.setMargin(exitButton, new Insets(550, -865, 0, 0)); 
 
         passwordField.textProperty().addListener(new ChangeListener<String>() {
             @Override

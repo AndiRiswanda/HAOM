@@ -1,35 +1,78 @@
 /* style.css */
+#profile-scene-root {
+    -fx-background-color: #212121;
+}
+
 #profile-title-label {
+    -fx-font-family: "Impact";
     -fx-font-size: 24px;
     -fx-padding: 20px;
-    -fx-text-fill: #4A90E2; /* Contoh: Warna teks */
+    -fx-text-fill: #ffffff; 
+    -fx-translate-y: -10;
 }
 
 #profile-image-view {
-    -fx-border-radius: 50%; /* Membuat gambar menjadi lingkaran */
-    -fx-border-color: #4A90E2; /* Contoh: Warna border */
     -fx-border-width: 2px;
-    -fx-translate-y: 90;
+    -fx-translate-y: 100;
 }
 
 #change-image-button {
-    -fx-background-color: #4A90E2; /* Warna latar belakang */
-    -fx-text-fill: white; /* Warna teks */
-    -fx-font-size: 16px; /* Ukuran teks */
+    -fx-background-color: #6a0dad;
+    -fx-text-fill: white; 
+    -fx-font-size: 8px; 
+    -fx-translate-x: 40;
+    -fx-translate-y: -65;
+}
+
+#delete-image-button {
+    -fx-background-color: #6a0dad;
+    -fx-text-fill: white; 
+    -fx-font-size: 8px; 
+    -fx-translate-x: -40;
+    -fx-translate-y: -65;
+}
+
+#change-image-button:hover, #delete-image-button:hover {
+    -fx-background-color: #54078b;
+}
+
+#email-label {
+    -fx-font-family: "Impact";
+    -fx-text-fill: #ffffff; 
+    -fx-font-size: 20px; 
+    -fx-translate-y: 70; 
+}
+
+#points-label {
+    -fx-font-family: "Impact";
+    -fx-text-fill: #ffffff; 
+    -fx-font-size: 20px; 
+    -fx-translate-y: 110;
 }
 
 #back-button {
-    -fx-background-color: #D0021B; /* Warna latar belakang */
-    -fx-text-fill: white; /* Warna teks */
-    -fx-font-size: 16px; /* Ukuran teks */
-    -fx-padding: 10px 20px; /* Padding */
+    -fx-background-color: #6a0dad;
+    -fx-text-fill: white; 
+    -fx-font-size: 16px; 
+    -fx-padding: 10px 20px;
+}
+
+#back-button:hover {
+    -fx-background-color: #54078b;
+}
+
+#logout-button {
+    -fx-background-color: #6a0dad;
+    -fx-text-fill: white; 
+    -fx-font-size: 16px; 
+    -fx-padding: 10px 20px;
+}
+
+#logout-button:hover {
+    -fx-background-color: #54078b;
 }
 
 #profile-layout {
-    -fx-background-color: #F5F5F5; /* Warna latar belakang */
-    -fx-padding: 20px; /* Padding */
-}
-
-#profile-root {
-    -fx-background-color: #FFFFFF; /* Warna latar belakang */
+    -fx-background-color: #F5F5F5;
+    -fx-padding: 20px; 
 }
