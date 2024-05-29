@@ -332,7 +332,7 @@ public class MainScene {
                                                                                          // text color
             backButton.setOnAction(e -> {
                 try {
-                    MainScene.showMainScreen(stage, ""); // Replace "" with appropriate username
+                    MainScene.showMainScreen(stage, username);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
