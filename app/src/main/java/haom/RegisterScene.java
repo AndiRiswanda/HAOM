@@ -20,11 +20,37 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 // Import UserController
 import controller.UserController;
 
 public class RegisterScene {
+
+    public static boolean isUsernameValid(String username) {
+        String usernameRegex = "^[a-zA-Z0-9_]{5,20}$";
+        Pattern pattern = Pattern.compile(usernameRegex);
+        Matcher matcher = pattern.matcher(username);
+        return matcher.matches();
+    }
+
+    // Method to validate email
+    public static boolean isEmailValid(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // Method to validate password
+    public static boolean isPasswordValid(String password) {
+        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+        Pattern pattern = Pattern.compile(passwordRegex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
 
     public static void showRegisterScreen(Stage mainStage) throws FileNotFoundException {
         // UI Elements
@@ -49,6 +75,12 @@ public class RegisterScene {
             String password = passwordField.getText();
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 CustomAlert.showCustomAlert(AlertType.ERROR, "Form Error!", "Please fill in all fields.");
+            } else if (!isUsernameValid(username)) {
+                CustomAlert.showCustomAlert(AlertType.ERROR, "Invalid Username", "Username must be 5-20 characters");
+            } else if (!isEmailValid(email)) {
+                CustomAlert.showCustomAlert(AlertType.ERROR, "Invalid Email", "Please enter a valid email address.");
+            } else if (!isPasswordValid(password)) {
+                CustomAlert.showCustomAlert(AlertType.ERROR, "Invalid Password", "Password must be at least 8\ncharacters long,lowercase,\nuppercase letter, and digit.");
             } else {
                 boolean success = UserController.registerUser(username, email, password);
                 if (success) {
@@ -137,11 +169,11 @@ public class RegisterScene {
         StackPane.setMargin(imageView2, new Insets(0, 0, 320, 0)); 
         StackPane.setMargin(registerText, new Insets(0, 0, 330, -150)); 
         StackPane.setMargin(circle1, new Insets(900, 0, 330, -1025 - 60));
-        StackPane.setMargin(circle2, new Insets(0, 0, 530, 1400));
-        StackPane.setMargin(circle3, new Insets(390, 0, 280, -1300 - 60));
+        StackPane.setMargin(circle2, new Insets(0, 0, 530, 1000));
+        StackPane.setMargin(circle3, new Insets(390, 0, 280, -1000 - 60));
         StackPane.setMargin(alreadyHaveAnAccount, new Insets(450, 0, 0, 0)); 
         StackPane.setMargin(loginLink, new Insets(450, -110, 0, 0)); 
-        StackPane.setMargin(exitButton, new Insets(550, -860, 0, 0)); 
+        StackPane.setMargin(exitButton, new Insets(550, -865, 0, 0)); 
         passwordField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

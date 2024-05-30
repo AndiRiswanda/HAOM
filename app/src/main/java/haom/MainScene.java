@@ -28,6 +28,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
+import java.util.Map;
 
 public class MainScene {
 
@@ -60,7 +61,6 @@ public class MainScene {
             }
         });
 
-
         Label titleLabel = new Label("Welcome, " + username);
         titleLabel.getStyleClass().add("title-label");
         StackPane.setAlignment(titleLabel, Pos.CENTER_LEFT);
@@ -78,6 +78,16 @@ public class MainScene {
         btn2.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
         Button btn3 = new Button("LeaderBoard");
         btn3.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
+
+        Button logoutButton = new Button("Logout");
+        logoutButton.setId("logout-button");
+        logoutButton.setOnAction(e -> {
+            try {
+                LoginScene.showLoginScreen(mainStage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
         // Set button sizes
         btn1.setPrefSize(200, 100);
@@ -98,9 +108,10 @@ public class MainScene {
             }
         });
 
-        // Profile Butt
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(logoutButton);
+        StackPane.setAlignment(logoutButton, Pos.BOTTOM_RIGHT);
 
-        // Arrange buttons in a GridPane
         GridPane buttonGrid = new GridPane();
         buttonGrid.setAlignment(Pos.CENTER);
         buttonGrid.setVgap(20);
@@ -112,7 +123,7 @@ public class MainScene {
         // VBox untuk teks dan tombol
         VBox actionBox = new VBox(10);
         actionBox.setAlignment(Pos.CENTER);
-        actionBox.getChildren().addAll(actionLabel, buttonGrid);
+        actionBox.getChildren().addAll(actionLabel, buttonGrid, stackPane);
 
         // Main layout
         BorderPane root = new BorderPane();
@@ -155,7 +166,13 @@ public class MainScene {
     
         @Override
         public void show() {
-            Label titleLabel = new Label("Profile of " + username);
+
+            Map<String, String> userDetails = UserController.getUserDetails(username);
+            String email = userDetails.get("email");
+            String haomicPoints = userDetails.get("haomicpoint");
+
+
+            Label titleLabel = new Label(username);
             titleLabel.setId("profile-title-label");
         
             // Get user-specific profile image path from the database
@@ -163,11 +180,16 @@ public class MainScene {
         
             Image profileImage = ImageLoader.loadProfileImage(userImagePath);
             ImageView profileImageView = new ImageView(profileImage);
-            profileImageView.setFitHeight(110);
-            profileImageView.setFitWidth(110);
+            profileImageView.setFitHeight(100);
+            profileImageView.setFitWidth(100);
+            profileImageView.setPreserveRatio(false);
             profileImageView.setId("profile-image-view");
-        
-            profileImageView.setOnMouseClicked(e -> {
+
+            Button changeImageButton = new Button("Change Profile");
+            changeImageButton.setPrefHeight(30);
+            changeImageButton.setPrefWidth(70);
+            changeImageButton.setId("change-image-button");
+            changeImageButton.setOnAction(e -> {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.getExtensionFilters()
                         .add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
@@ -183,14 +205,18 @@ public class MainScene {
                     profileImageView.setImage(ImageLoader.loadProfileImage(newImagePath));
                 }
             });
-        
-            Circle clip = new Circle(50, 50, 50);
-            profileImageView.setClip(clip);
-        
-            Label usernameLabel = new Label("Username: " + username);
-            Label emailLabel = new Label("Email: " + UserController.getUserDetails(username).get("email"));
-            Label haomicPointLabel = new Label("Haomic Point: " );
-        
+
+            Button deleteImageButton = new Button("Delete Profile");
+            deleteImageButton.setPrefHeight(30);
+            deleteImageButton.setPrefWidth(70);
+            deleteImageButton.setId("delete-image-button");
+            deleteImageButton.setOnAction(e -> {
+            // Define default image path or null if there's no default image
+                String defaultImagePath = "D:/HAOMGIT/HAOM/app/src/main/resources/PicAsset/userProfile.png";
+                UserController.setProfileImagePath(username, defaultImagePath);
+                profileImageView.setImage(ImageLoader.loadProfileImage(defaultImagePath));
+            });
+
             Button backButton = new Button("Back");
             backButton.setId("back-button");
             backButton.setOnAction(e -> {
@@ -200,12 +226,40 @@ public class MainScene {
                     ex.printStackTrace();
                 }
             });
-        
-            VBox profileInfo = new VBox(10);
-            profileInfo.getChildren().addAll(titleLabel, profileImageView, usernameLabel, emailLabel, haomicPointLabel, backButton);
-            profileInfo.setAlignment(Pos.CENTER);
-        
-            Scene scene = new Scene(profileInfo, 800, 600);
+
+            Circle circle = new Circle(120, Color.web("#424242"));
+            circle.setStyle("-fx-translate-y: 50;");
+
+            Rectangle rectangle = new Rectangle(350, 90);
+            rectangle.setStroke(Color.web("#6a0dad5b"));
+            rectangle.setFill(Color.web("#424242"));
+            rectangle.setStyle("-fx-translate-y: 90;");
+
+            Label emailLabel = new Label("Email : " + email);
+            emailLabel.setId("email-label");
+            
+            Label pointsLabel = new Label("Haomic Points  : " + haomicPoints);
+            pointsLabel.setId("points-label");
+
+            StackPane stackPane = new StackPane();
+            stackPane.setId("profile-scene-root");
+            stackPane.getChildren().addAll(circle, rectangle, emailLabel, pointsLabel, titleLabel, profileImageView, changeImageButton, backButton, deleteImageButton);
+            StackPane.setAlignment(circle, Pos.TOP_CENTER);
+            StackPane.setAlignment(rectangle, Pos.CENTER);
+            StackPane.setAlignment(emailLabel, Pos.CENTER);
+            StackPane.setAlignment(pointsLabel, Pos.CENTER);
+            StackPane.setAlignment(titleLabel, Pos.TOP_CENTER);
+            StackPane.setAlignment(profileImageView, Pos.TOP_CENTER);
+            StackPane.setAlignment(changeImageButton, Pos.CENTER);
+            StackPane.setAlignment(backButton, Pos.TOP_RIGHT);
+            StackPane.setAlignment(deleteImageButton, Pos.CENTER);
+
+            Circle clip = new Circle(50, 50, 50); // Menggunakan radius yang sesuai dengan ukuran ImageView
+            profileImageView.setClip(clip);
+
+            
+
+            Scene scene = new Scene(stackPane, 800, 600);
             scene.getStylesheets().add(MainScene.class.getResource("/profileStyle.css").toExternalForm());
             stage.setScene(scene);
             stage.show();

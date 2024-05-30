@@ -27,7 +27,7 @@ public class UserController {
     }
 
     public static Map<String, String> getUserDetails(String username) {
-        String sql = "SELECT username, email, profile_image_path FROM users WHERE username = ?";
+        String sql = "SELECT username, email, haomicpoint, profile_image_path FROM users WHERE username = ?";
         Map<String, String> userDetails = new HashMap<>();
         try (Connection conn = DatabaseConnection.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -36,6 +36,7 @@ public class UserController {
             if (rs.next()) {
                 userDetails.put("username", rs.getString("username"));
                 userDetails.put("email", rs.getString("email"));
+                userDetails.put("haomicpoint", String.valueOf(rs.getInt("haomicpoint")));
                 userDetails.put("profile_image_path", rs.getString("profile_image_path"));
             }
         } catch (SQLException e) {

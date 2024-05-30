@@ -154,7 +154,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #54078b;; /* Lighter purple on hover */
+    -fx-background-color: #54078b; /* Lighter purple on hover */
 }
 
 .button:pressed {
