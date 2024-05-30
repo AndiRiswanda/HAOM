@@ -71,4 +71,16 @@ public class UserController {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void incrementHaomicPoints(String username) {
+        String query = "UPDATE users SET haomicpoint = haomicpoint + 1 WHERE username = ?";
+
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

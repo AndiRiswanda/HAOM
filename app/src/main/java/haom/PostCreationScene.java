@@ -19,6 +19,7 @@ import java.io.File;
 public class PostCreationScene extends BaseScene {
 
     private ObservableList<String> genresList;
+    public String ImagePath;
 
     public PostCreationScene(Stage stage, String username) {
         super(stage, username);
@@ -51,18 +52,15 @@ public class PostCreationScene extends BaseScene {
             if (selectedFile != null) {
                 Image image = new Image(selectedFile.toURI().toString());
                 imageView.setImage(image);
+                ImagePath = selectedFile.toURI().toString();  // Ensure correct format
             }
         });
 
         Button postButton = new Button("Post");
         postButton.setStyle("-fx-background-color: #6a0dad; -fx-text-fill: white;");
         postButton.setOnAction(e -> {
-            String genre = genreComboBox.getValue();
-            String title = titleField.getText();
-            String description = descriptionArea.getText();
-            Image image = imageView.getImage();
-            // Handle the post creation logic here, e.g., save to the database or display it in a list
-
+            PostInfo post = new PostInfo(genreComboBox.getValue(), titleField.getText(), descriptionArea.getText(), ImagePath);
+            PostDisplayScene.addPost(post);
             // Clear the fields after posting
             genreComboBox.setValue(null);
             titleField.clear();
@@ -92,6 +90,6 @@ public class PostCreationScene extends BaseScene {
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-        
     }
 }
+

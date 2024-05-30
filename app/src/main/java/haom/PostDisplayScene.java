@@ -1,5 +1,6 @@
 package haom;
 
+import config.DatabaseConnection;
 import haom.MainScene.BaseScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,25 +19,27 @@ import javafx.stage.Stage;
 
 public class PostDisplayScene extends BaseScene {
 
-    private ObservableList<PostInfo> postsList;
+    private static ObservableList<PostInfo> postsList = FXCollections.observableArrayList();
 
     public PostDisplayScene(Stage stage, String username) {
         super(stage, username);
-        this.postsList = FXCollections.observableArrayList();
+        postsList = DatabaseConnection.loadPosts();
     }
 
     @Override
     public void show() {
-        Label titleLabel = new Label("Posts");
+        Label titleLabel = new Label("POSTS");
         titleLabel.setStyle("-fx-font-size: 40px; -fx-padding: 25px; -fx-text-fill: #6a0dad;");
 
         ListView<PostInfo> postsListView = new ListView<>(postsList);
+        postsListView.getStyleClass().add("postliststyle");
         postsListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(PostInfo item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
+                    setGraphic(null);
                 } else {
                     // Create a custom HBox to represent the post
                     HBox postBox = new HBox(10);
@@ -70,6 +73,21 @@ public class PostDisplayScene extends BaseScene {
             }
         });
 
+        // Di dalam kelas PostDisplayScene
+
+        postsListView.setOnMouseClicked(event -> {
+            PostInfo selectedPost = postsListView.getSelectionModel().getSelectedItem();
+            if (selectedPost != null) {
+                try {
+                    HelpScene helpScene = new HelpScene(stage, username);
+                    helpScene.show();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
         VBox layout = new VBox(20);
         layout.getChildren().addAll(titleLabel, postsListView, backButton);
         layout.setAlignment(Pos.CENTER);
@@ -78,12 +96,14 @@ public class PostDisplayScene extends BaseScene {
         root.setCenter(layout);
 
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/postStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
-    public void addPost(PostInfo post) {
+    public static void addPost(PostInfo post) {
+        System.out.println("Adding post: " + post);
         postsList.add(post);
+        DatabaseConnection.savePost(post); // Simpan postingan ke basis data
     }
 }

@@ -1,0 +1,65 @@
+.root {
+    -fx-font-family: 'Arial';
+    -fx-background-color: #212121; /* Dark background */
+}
+
+.label {
+    -fx-font-size: 19px;
+    -fx-font-family: "Copperplate";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-font-family: "Copperplate";
+    -fx-background-color: #6a0dad; /* Purple background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+
+    -fx-transition-duration: 0.2s; /* Animation duration */
+    -fx-cursor: hand; /* Change cursor to hand on hover */
+}
+
+.button:hover {
+    -fx-background-color: #54078b; /* Lighter purple on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #4a148c; /* Darker purple on press */
+}
+
+
+.postliststyle {
+    -fx-background-color: #333333; /* Dark background color */
+    -fx-border-color: transparent; /* Remove border color */
+    -fx-border-width: 0px; /* Remove border width */
+    -fx-font-size: 27px; /* Increase font size */
+    -fx-font-family: 'Arial'; /* Specify font family */
+    -fx-padding: 10px 0px 10px 0px; /* Adjust padding */
+    -fx-focus-color: transparent; /* Remove focus color */
+    -fx-faint-focus-color: transparent; /* Remove faint focus color */
+    -fx-control-inner-background: #333333; /* Background color for inner content */
+    -fx-selection-bar: #6a0dad; /* Selection bar color */
+    -fx-cell-size: 40px; /* Increase cell size */
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-opacity: 0; /* Hide vertical scroll bar */
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-opacity: 0; /* Hide horizontal scroll bar */
+}
+/* Style for hover effect */
+.list-cell:hover {
+    -fx-background-color: #6a0dad; /* Darker background color on hover */
+}
+
+/* Style for selected item */
+.list-cell:selected {
+    -fx-background-color: #6a0dad; /* Selection color */
+    -fx-text-fill: white; /* Text color for selected item */
+}

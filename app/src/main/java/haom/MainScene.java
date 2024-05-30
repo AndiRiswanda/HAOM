@@ -113,7 +113,7 @@ public class MainScene {
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(logoutButton);
         StackPane.setAlignment(logoutButton, Pos.BOTTOM_RIGHT);
-
+        StackPane.setMargin(logoutButton, new Insets(0, 0, -105, -30)); 
         GridPane buttonGrid = new GridPane();
         buttonGrid.setAlignment(Pos.CENTER);
         buttonGrid.setVgap(20);
@@ -283,7 +283,7 @@ public class MainScene {
 
         @Override
         public void show() throws SQLException {
-            Label titleLabel = new Label("Haom Leaderboard");
+            Label titleLabel = new Label("HAOM LEADERBOARD");
             titleLabel.setStyle("-fx-font-size: 40px; -fx-padding: 25px; -fx-text-fill: #6a0dad;");
 
             // Fetch usernames and haomic points from the SQLite database
