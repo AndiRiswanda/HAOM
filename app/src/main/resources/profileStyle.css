@@ -1,15 +1,21 @@
 /* style.css */
-#profile-title-label {
-    -fx-font-size: 24px;
-    -fx-padding: 20px;
-    -fx-text-fill: #4A90E2; /* Contoh: Warna teks */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-background-color: #212121; /* Dark background */
 }
+#profile-title-label {
+    -fx-font-size: 30pt; /* Adjust the font size as needed */
+    -fx-fill: #6a0dad; /* Set text color */    
+    -fx-font-family: 'Arial';
+    -fx-font-weight: bold; /* Set font weight */
+}
+
 
 #profile-image-view {
     -fx-border-radius: 50%; /* Membuat gambar menjadi lingkaran */
     -fx-border-color: #4A90E2; /* Contoh: Warna border */
     -fx-border-width: 2px;
-    -fx-translate-y: 90;
+    -fx-translate-y: 70;
 }
 
 #change-image-button {
@@ -17,19 +23,31 @@
     -fx-text-fill: white; /* Warna teks */
     -fx-font-size: 16px; /* Ukuran teks */
 }
-
 #back-button {
-    -fx-background-color: #D0021B; /* Warna latar belakang */
-    -fx-text-fill: white; /* Warna teks */
-    -fx-font-size: 16px; /* Ukuran teks */
-    -fx-padding: 10px 20px; /* Padding */
+    -fx-font-family: "Copperplate";
+    -fx-background-color: #6a0dad; /* Purple background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+
+    -fx-transition-duration: 0.2s; /* Animation duration */
+    -fx-cursor: hand; /* Change cursor to hand on hover */
 }
 
+#back-button:hover {
+    -fx-background-color: #54078b;; /* Lighter purple on hover */
+}
+
+#back-button:pressed {
+    -fx-background-color: #4a148c; /* Darker purple on press */
+}
 #profile-layout {
-    -fx-background-color: #F5F5F5; /* Warna latar belakang */
+    -fx-background-color: #212121; /* Warna latar belakang */
     -fx-padding: 20px; /* Padding */
 }
 
 #profile-root {
-    -fx-background-color: #FFFFFF; /* Warna latar belakang */
+    -fx-background-color: #212121; /* Warna latar belakang */
 }
