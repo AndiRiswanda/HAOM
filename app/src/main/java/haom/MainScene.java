@@ -24,9 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
@@ -74,9 +72,9 @@ public class MainScene {
         actionLabel
                 .setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: Impact; -fx-text-fill: white;");
 
-        Button btn1 = new Button("Volunteer and Find\nImpact Opportunities");
+        Button btn1 = new Button("Make Chellenge");
         btn1.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
-        Button btn2 = new Button("Lead a Social Impact\nEvent, Fundraiser,\nProject, Club,\nor Organization");
+        Button btn2 = new Button("Find Chellenge");
         btn2.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
         Button btn3 = new Button("LeaderBoard");
         btn3.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
@@ -92,13 +90,16 @@ public class MainScene {
         });
 
         // Set button sizes
-        btn1.setPrefSize(200, 200);
+        btn1.setPrefSize(200, 100);
         btn2.setPrefSize(200, 200);
-        btn3.setPrefSize(200, 200);
+        btn3.setPrefSize(200, 100);
+
+        // Create instances of scenes to be reused
+        PostDisplayScene postDisplayScene = new PostDisplayScene(mainStage, username);
 
         // Set button actions
-        btn1.setOnAction(e -> new VolunteerScene(mainStage, username).show());
-        btn2.setOnAction(e -> new LeadEventScene(mainStage, username).show());
+        btn1.setOnAction(e -> new PostCreationScene(mainStage, username).show());
+        btn2.setOnAction(e -> postDisplayScene.show());
         btn3.setOnAction(e -> {
             try {
                 new LeaderBoard(mainStage, username).show();
@@ -157,12 +158,12 @@ public class MainScene {
     public static class ProfileScene extends BaseScene {
 
         private String username;
-
+    
         public ProfileScene(Stage stage, String username) {
             super(stage, username);
             this.username = username;
         }
-
+    
         @Override
         public void show() {
 
@@ -173,11 +174,10 @@ public class MainScene {
 
             Label titleLabel = new Label(username);
             titleLabel.setId("profile-title-label");
-            titleLabel.setStyle("-fx-font-size: 24px;");
-
+        
             // Get user-specific profile image path from the database
             String userImagePath = UserController.getProfileImagePath(username);
-
+        
             Image profileImage = ImageLoader.loadProfileImage(userImagePath);
             ImageView profileImageView = new ImageView(profileImage);
             profileImageView.setFitHeight(100);
@@ -264,80 +264,13 @@ public class MainScene {
             stage.setScene(scene);
             stage.show();
         }
+    
     }
 
-    // VolunteerScene class
-    static class VolunteerScene extends BaseScene {
-
-        public VolunteerScene(Stage stage, String username) {
-            super(stage, username);
-        }
-
-        @Override
-        public void show() {
-            Label titleLabel = new Label("Volunteer Opportunities for " + username);
-            titleLabel
-                    .setStyle("-fx-font-size: 24px; -fx-padding: 20px; -fx-text-fill: #6a0dad; -fx-font-weight: bold;");
-
-            Button backButton = new Button("Back");
-            backButton.setStyle("-fx-background-color: #6a0dad; -fx-text-fill: white; -fx-font-weight: bold;");
-            backButton.setOnAction(e -> {
-                try {
-                    MainScene.showMainScreen(stage, username);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-
-            VBox layout = new VBox(20);
-            layout.getChildren().addAll(titleLabel, backButton);
-            layout.setAlignment(Pos.CENTER);
-
-            BorderPane root = new BorderPane();
-            root.setCenter(layout);
-
-            // Set background color
-            root.setStyle("-fx-background-color: #f0f0f0;");
-
-            Scene scene = new Scene(root, 800, 600);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    // LeadEventScene class
-    static class LeadEventScene extends BaseScene {
-
-        public LeadEventScene(Stage stage, String username) {
-            super(stage, username);
-        }
-
-        @Override
-        public void show() {
-            Label titleLabel = new Label("Lead a Social Impact Event for " + username);
-            titleLabel.setStyle("-fx-font-size: 24px; -fx-padding: 20px;");
-
-            Button backButton = new Button("Back");
-            backButton.setOnAction(e -> {
-                try {
-                    MainScene.showMainScreen(stage, username);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-
-            VBox layout = new VBox(20);
-            layout.getChildren().addAll(titleLabel, backButton);
-            layout.setAlignment(Pos.CENTER);
-
-            BorderPane root = new BorderPane();
-            root.setCenter(layout);
-
-            Scene scene = new Scene(root, 800, 600);
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
+    // PostCreationScene class
+    
+   
+    
 
     // LeaderBoard class
     static class LeaderBoard extends BaseScene {
