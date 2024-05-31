@@ -87,7 +87,7 @@ public class PostCreationScene extends BaseScene {
         root.setCenter(layout);
 
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/PostStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

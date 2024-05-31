@@ -1,6 +1,5 @@
 package haom;
 
-import config.DatabaseConnection;
 import controller.UserController;
 import haom.MainScene.BaseScene;
 import javafx.geometry.Pos;

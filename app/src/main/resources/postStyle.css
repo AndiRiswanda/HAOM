@@ -10,6 +10,25 @@
     -fx-text-fill: white;
 }
 
+.text-field {
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+    -fx-background-color: #4b4b4b; 
+    -fx-text-fill: #ffffff; 
+    -fx-border-width: 1px;
+    -fx-border-color: transparent; 
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px; 
+
+}
+
+.text-field:focused {
+    -fx-font-family: "Copperplate";
+    -fx-border-color: #9a4bff;
+    -fx-border-width: 2px;
+}
+
 .button {
     -fx-font-family: "Copperplate";
     -fx-background-color: #6a0dad; /* Purple background */
