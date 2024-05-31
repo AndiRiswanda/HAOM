@@ -2,9 +2,8 @@
 
 .root {
     -fx-font-family: 'Arial';
-    -fx-background-color: #212121; /* Dark background */
+    -fx-background-color: #212121; 
 }
-
 
 .leaderboardstyle {
     -fx-background-color: #333333; /* Dark background color */
@@ -13,7 +12,7 @@
     -fx-font-size: 27px; /* Increase font size */
     -fx-font-family: 'Arial'; /* Specify font family */
     -fx-padding: 10px 0px 10px 0px; /* Adjust padding */
-    -fx-focus-color: transparent; /* Remove focus color */
+    -fx-focus-color: transparent; 
     -fx-faint-focus-color: transparent; /* Remove faint focus color */
     -fx-control-inner-background: #333333; /* Background color for inner content */
     -fx-selection-bar: #6a0dad; /* Selection bar color */
@@ -35,42 +34,39 @@
 
 /* Style for selected item */
 .list-cell:selected {
-    -fx-background-color: #6a0dad; /* Selection color */
-    -fx-text-fill: white; /* Text color for selected item */
+    -fx-background-color: #6a0dad; 
+    -fx-text-fill: white; 
 }
-
-
-
-
 
 .login-text {
     -fx-font-size: 17pt; /* Adjust the font size as needed */
     -fx-font-family: "Impact"; /* Specify font family */
     -fx-fill: #333333; /* Set text color */
-    -fx-font-weight: bold; /* Set font weight */
-    -fx-text-alignment: center; /* Set text alignment */
+    -fx-font-weight: bold; 
+    -fx-text-alignment: center; 
 }
 
 .register-text {
     -fx-font-size: 17pt; /* Adjust the font size as needed */
     -fx-font-family: "Impact"; /* Specify font family */
     -fx-fill: #333333; /* Set text color */
-    -fx-font-weight: bold; /* Set font weight */
+    -fx-font-weight: bold; 
     -fx-translate-y: -30;    
 }
 
- .haom-text-1 {
+.haom-text-1 {
     -fx-font-size: 30pt; /* Adjust the font size as needed */
     -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
     -fx-font-family: "Impact"; /* Specify font family */
     -fx-fill: #6a0dad; /* Set text color */    
-    -fx-font-weight: bold; /* Set font weight */
+    -fx-font-weight: bold; 
 }
+
 .haom-text-2 {
     -fx-font-size: 17pt; /* Adjust the font size as needed */
     -fx-font-family: "Copperplate"; /* Specify font family */
     -fx-fill: #6a0dad; /* Set text color */    
-    -fx-font-weight: bold; /* Set font weight */
+    -fx-font-weight: bold; 
     -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
 }
 
@@ -78,104 +74,90 @@
     -fx-font-size: 17pt; /* Adjust the font size as needed */
     -fx-font-family: "Copperplate"; /* Specify font family */
     -fx-fill: #6a0dad; /* Set text color */    
-    -fx-font-weight: bold; /* Set font weight */
+    -fx-font-weight: bold; 
     -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
 }
 
 .welcomeUser-text-1 {
     -fx-font-size: 27pt; /* Adjust the font size as needed */
     -fx-effect: dropshadow(gaussian, #0e0e0e, 5, 0.5, 2, 2); /* Add shadow effect */
-    -fx-font-family: "Copperplate"; /* Specify font family */
-    -fx-fill: #6a0dad; /* Set text color */    
-    -fx-font-weight: bold; /* Set font weight */
+    -fx-font-family: "Copperplate"; 
+    -fx-fill: #6a0dad;    
+    -fx-font-weight: bold; 
 }
 
 .leaderboard-text {
     -fx-font-size: 24px;
     -fx-padding: 20px;
-    -fx-text-fill: #333333; /* Set label text color */
+    -fx-text-fill: #333333; 
 }
-
 
 .register-text {
-    -fx-font-size: 18pt; /* Adjust the font size as needed */
-    -fx-font-family: "Impact"; /* Specify font family */
-    -fx-fill: #333333; /* Set text color */
-    -fx-font-weight: bold; /* Set font weight */
-    -fx-text-alignment: center; /* Set text alignment */
+    -fx-font-size: 18pt;
+    -fx-font-family: "Impact"; 
+    -fx-fill: #333333;
+    -fx-font-weight: bold; 
+    -fx-text-alignment: center; 
 }
-
 
 .label {
     -fx-font-size: 19px;
     -fx-font-family: "Copperplate";
     -fx-font-weight: bold;
-    -fx-text-fill: #d3d3d3; /* Light gray text */
+    -fx-text-fill: #d3d3d3;
 }
 
 .username-label-register, .email-label-register, .password-label-register {
     -fx-font-size: 19px;
     -fx-font-family: "Copperplate";
     -fx-font-weight: bold;
-    -fx-text-fill: #d3d3d3; /* Light gray text */
+    -fx-text-fill: #d3d3d3; 
 }
 
 .text-field {
     -fx-pref-width: 200px;
     -fx-font-size: 14px;
-    -fx-background-color: #4b4b4b; /* Darker background for text field */
-    -fx-text-fill: #ffffff; /* White text */
+    -fx-background-color: #4b4b4b; 
+    -fx-text-fill: #ffffff; 
     -fx-border-width: 1px;
-    -fx-border-color: transparent; /* Transparent border */
+    -fx-border-color: transparent; 
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-padding: 5px; /* Add padding to make room for glow effect */
+    -fx-padding: 5px; 
 
 }
-
 
 .text-field:focused {
     -fx-font-family: "Copperplate";
-    -fx-border-color: #9a4bff; /* Purple border when focused */
+    -fx-border-color: #9a4bff;
     -fx-border-width: 2px;
 }
 
-
 .button {
     -fx-font-family: "Copperplate";
-    -fx-background-color: #6a0dad; /* Purple background */
+    -fx-background-color: #6a0dad; 
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-padding: 10px 20px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
 
-    -fx-transition-duration: 0.2s; /* Animation duration */
-    -fx-cursor: hand; /* Change cursor to hand on hover */
+    -fx-transition-duration: 0.2s;
+    -fx-cursor: hand; 
 }
 
 .button:hover {
-    -fx-background-color: #54078b; /* Lighter purple on hover */
+    -fx-background-color: #54078b; 
 }
 
 .button:pressed {
-    -fx-background-color: #4a148c; /* Darker purple on press */
+    -fx-background-color: #4a148c; 
 }
 
 .login-register-link {
     -fx-font-family: "Copperplate";
     -fx-text-fill: #9a4bff; 
     -fx-font-weight: bold;
-}
-
-#main-border-root {
-    -fx-background-color: #212121;
-    -fx-border-color: #0e0e0e;
-}
-
-.scroll-pane {
-    -fx-background: #2e2e2e;
-    -fx-border-color: #121212;
 }
 
 .title-label {
@@ -194,5 +176,4 @@
 
 .btn1-main, .btn2-main, .btn3-main:hover {
     -fx-background-color: #54078b;
-
 }

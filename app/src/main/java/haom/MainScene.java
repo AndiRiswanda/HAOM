@@ -74,9 +74,9 @@ public class MainScene {
         actionLabel
                 .setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: Impact; -fx-text-fill: white;");
 
-        Button btn1 = new Button("Make Chellenge");
+        Button btn1 = new Button("Make Challenge");
         btn1.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
-        Button btn2 = new Button("Find Chellenge");
+        Button btn2 = new Button("Find Challenge");
         btn2.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
         Button btn3 = new Button("LeaderBoard");
         btn3.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
@@ -113,7 +113,7 @@ public class MainScene {
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(logoutButton);
         StackPane.setAlignment(logoutButton, Pos.BOTTOM_RIGHT);
-        StackPane.setMargin(logoutButton, new Insets(0, 0, -105, -30)); 
+        StackPane.setMargin(logoutButton, new Insets(0, 0, -115, -35)); 
         GridPane buttonGrid = new GridPane();
         buttonGrid.setAlignment(Pos.CENTER);
         buttonGrid.setVgap(20);
@@ -267,12 +267,7 @@ public class MainScene {
             stage.show();
         }
     
-    }
-
-    // PostCreationScene class
-    
-   
-    
+    } 
 
     // LeaderBoard class
     static class LeaderBoard extends BaseScene {
