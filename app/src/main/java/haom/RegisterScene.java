@@ -91,6 +91,9 @@ public class RegisterScene {
                 }
             }
         });
+        usernameField.setOnAction(e -> emailField.requestFocus());
+        emailField.setOnAction(e -> passwordField.requestFocus());
+        passwordField.setOnAction(e -> registerButton.fire());
 
         // Images
         Image haomIcon = new Image(RegisterScene.class.getResourceAsStream("/PicAsset/charHaomOpen.png"));

@@ -3,7 +3,6 @@ package haom;
 import haom.MainScene.BaseScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,7 +22,7 @@ public class PostCreationScene extends BaseScene {
 
     public PostCreationScene(Stage stage, String username) {
         super(stage, username);
-        this.genresList = FXCollections.observableArrayList("Genre1", "Genre2", "Genre3"); // Add your genres here
+        this.genresList = FXCollections.observableArrayList("Bantuan Kecil", "Kebutuhan\nKomunitas", "Masalah Pribadi"); // Add your genres here
     }
 
     @Override
@@ -40,7 +39,8 @@ public class PostCreationScene extends BaseScene {
         TextArea descriptionArea = new TextArea();
         descriptionArea.setPromptText("Enter description");
 
-        ImageView imageView = new ImageView();
+        Image defaultImage = new Image(getClass().getResource("/PicAsset/userProfile.png").toString());
+        ImageView imageView = new ImageView(defaultImage);
         imageView.setFitHeight(150);
         imageView.setFitWidth(150);
 
@@ -78,15 +78,15 @@ public class PostCreationScene extends BaseScene {
             }
         });
 
-        VBox layout = new VBox(20);
+        VBox layout = new VBox(10);
         layout.getChildren().addAll(titleLabel, genreComboBox, titleField, descriptionArea, imageView, uploadButton, postButton, backButton);
-        layout.setPadding(new Insets(20));
+
         layout.setAlignment(Pos.CENTER);
 
         BorderPane root = new BorderPane();
         root.setCenter(layout);
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 940, 630);
         scene.getStylesheets().add(getClass().getResource("/PostStyle.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

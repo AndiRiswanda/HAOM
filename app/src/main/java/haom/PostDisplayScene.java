@@ -50,12 +50,12 @@ public class PostDisplayScene extends BaseScene {
                     imageView.setFitWidth(100);
                     imageView.setFitHeight(100);
 
-                    Label titleLabel = new Label(item.getTitle());
+                    Label postTitleLabel = new Label(item.getTitle());
                     Label genreLabel = new Label("Genre: " + item.getGenre());
                     Label descriptionLabel = new Label("Description: " + item.getDescription());
 
                     VBox textInfo = new VBox(5);
-                    textInfo.getChildren().addAll(titleLabel, genreLabel, descriptionLabel);
+                    textInfo.getChildren().addAll(postTitleLabel, genreLabel, descriptionLabel);
 
                     postBox.getChildren().addAll(imageView, textInfo);
                     setGraphic(postBox);
@@ -73,20 +73,25 @@ public class PostDisplayScene extends BaseScene {
             }
         });
 
-        // Di dalam kelas PostDisplayScene
-
+        // Navigate to HelpScene with post details
         postsListView.setOnMouseClicked(event -> {
             PostInfo selectedPost = postsListView.getSelectionModel().getSelectedItem();
             if (selectedPost != null) {
                 try {
-                    HelpScene helpScene = new HelpScene(stage, username);
+                    HelpScene helpScene = new HelpScene(
+                        stage, 
+                        username, 
+                        selectedPost.getTitle(), 
+                        selectedPost.getGenre(), 
+                        selectedPost.getDescription(), 
+                        selectedPost.getImageURL()
+                    );
                     helpScene.show();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
         });
-
 
         VBox layout = new VBox(20);
         layout.getChildren().addAll(titleLabel, postsListView, backButton);
@@ -104,6 +109,6 @@ public class PostDisplayScene extends BaseScene {
     public static void addPost(PostInfo post) {
         System.out.println("Adding post: " + post);
         postsList.add(post);
-        DatabaseConnection.savePost(post); // Simpan postingan ke basis data
+        DatabaseConnection.savePost(post); // Save the post to the database
     }
 }
