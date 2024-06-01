@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 
 public class LoginScene {
     
-    static void showLoginScreen(Stage mainStage) {
+    public static void showLoginScreen(Stage mainStage) {
 
         // Create UI elements
         Label usernameLabel = new Label("Username :");
@@ -126,7 +126,8 @@ public class LoginScene {
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(e -> Platform.exit());
         exitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
-        
+        usernameField.setOnAction(e -> passwordField.requestFocus());
+        passwordField.setOnAction(e -> loginButton.fire());
         // StackPane to stack the loginBox and rectangle
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(haomText1, haomText2, rectangle, loginBox, imageView1, loginText, circle1, circle2, circle3, dontHaveAccountText, registerLink,exitButton);
