@@ -41,11 +41,9 @@ public class PostDisplayScene extends BaseScene {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Create a custom HBox to represent the post
                     HBox postBox = new HBox(10);
                     postBox.setAlignment(Pos.CENTER_LEFT);
 
-                    // Display post details
                     ImageView imageView = new ImageView(new Image(item.getImageURL()));
                     imageView.setFitWidth(100);
                     imageView.setFitHeight(100);
@@ -109,6 +107,6 @@ public class PostDisplayScene extends BaseScene {
     public static void addPost(PostInfo post) {
         System.out.println("Adding post: " + post);
         postsList.add(post);
-        DatabaseConnection.savePost(post); // Save the post to the database
+        DatabaseConnection.savePost(post);
     }
 }

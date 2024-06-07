@@ -23,11 +23,11 @@ public class ImageLoader {
         if (defaultImageStream != null) {
             return new Image(defaultImageStream);
         }
-        return null; // or some default placeholder image
+        return null; 
     }
 
     public static void saveProfileImage(File file, String destinationPath) {
-        // Ensure the destination directory exists and is writable
+
         File destFile = new File(destinationPath);
         File destDir = destFile.getParentFile();
         if (destDir.exists() || destDir.mkdirs()) {
@@ -49,8 +49,6 @@ public class ImageLoader {
 
 
     public static String getUserImagePathFromDatabase(String username) {
-        // Replace with actual database call to get user-specific image path
-        // For example: "C:/Path/To/PicAsset/" + username + "_profile.png"
         return "C:/Path/To/PicAsset/" + username + "_profile.png";
     }
 }

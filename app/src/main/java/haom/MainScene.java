@@ -30,13 +30,11 @@ public class MainScene {
         profileImageView.setFitHeight(40);
         profileImageView.setFitWidth(40);
 
-        // Create a circle to clip the ImageView
         Circle clip = new Circle(20, 20, 20);
         profileImageView.setClip(clip);
 
         StackPane.setAlignment(profileImageView, Pos.CENTER_RIGHT);
 
-        // Event handler for profile image click
         profileImageView.setOnMouseClicked(e -> {
             try {
                 new ProfileScene(mainStage, username).show();
@@ -51,7 +49,7 @@ public class MainScene {
 
         panel.getChildren().addAll(titleLabel, profileImageView);
 
-        // Teks di atas tombol
+
         Label actionLabel = new Label("What Would You Like to Do Today?");
         actionLabel
                 .setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: Impact; -fx-text-fill: white;");
@@ -73,15 +71,14 @@ public class MainScene {
             }
         });
 
-        // Set button sizes
         btn1.setPrefSize(200, 100);
         btn2.setPrefSize(200, 200);
         btn3.setPrefSize(200, 100);
 
-        // Create instances of scenes to be reused
+
         PostDisplayScene postDisplayScene = new PostDisplayScene(mainStage, username);
 
-        // Set button actions
+
         btn1.setOnAction(e -> new PostCreationScene(mainStage, username).show());
         btn2.setOnAction(e -> postDisplayScene.show());
         btn3.setOnAction(e -> {
@@ -104,19 +101,18 @@ public class MainScene {
         buttonGrid.add(btn2, 1, 1);
         buttonGrid.add(btn3, 2, 1);
 
-        // VBox untuk teks dan tombol
+
         VBox actionBox = new VBox(10);
         actionBox.setAlignment(Pos.CENTER);
         actionBox.getChildren().addAll(actionLabel, buttonGrid, stackPane);
 
-        // Main layout
+
         BorderPane root = new BorderPane();
         root.setId("main-border-root");
         root.setCenter(actionBox);
         BorderPane.setAlignment(panel, Pos.TOP_CENTER);
         root.setTop(new VBox(panel));
 
-        // Scene setup
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(MainScene.class.getResource("/style.css").toExternalForm());
 
@@ -125,7 +121,7 @@ public class MainScene {
         mainStage.show();
     }
 
-    // Abstract base class for scenes
+    
     abstract static class BaseScene {
         protected Stage stage;
         protected String username;

@@ -95,19 +95,19 @@ public class LoginScene {
         VBox loginBox = new VBox(gridPane);
         loginBox.setAlignment(Pos.CENTER);
         loginBox.setSpacing(10);
-        loginBox.setPadding(new Insets(150, 0, 0, 0)); // Adjust top padding to move the VBox down
+        loginBox.setPadding(new Insets(150, 0, 0, 0)); 
 
         // Create rectangle
-        Rectangle rectangle = new Rectangle(420, 200); // Set dimensions
-        rectangle.setArcWidth(20); // Set corner radius
+        Rectangle rectangle = new Rectangle(420, 200); 
+        rectangle.setArcWidth(20); 
         rectangle.setArcHeight(20);
-        rectangle.setStroke(Color.web("#272726")); // Set stroke color
-        rectangle.setStrokeWidth(17); // Set stroke width
-        rectangle.setFill(Color.TRANSPARENT); // Set fill color to transparent
+        rectangle.setStroke(Color.web("#272726")); 
+        rectangle.setStrokeWidth(17); 
+        rectangle.setFill(Color.TRANSPARENT); 
 
-        Circle circle1 = new Circle(250, Color.web("#6a0dad")); // Create purple circle
-        Circle circle2 = new Circle(250, Color.web("#6a0dad")); // Create purple circle
-        Circle circle3 = new Circle(150, Color.web("#6a0dad")); // Create purple circle
+        Circle circle1 = new Circle(250, Color.web("#6a0dad")); 
+        Circle circle2 = new Circle(250, Color.web("#6a0dad")); 
+        Circle circle3 = new Circle(150, Color.web("#6a0dad")); 
 
         Text dontHaveAccountText = new Text("Don't have an account?                here");
         dontHaveAccountText.setFill(Color.WHITE);
@@ -115,7 +115,7 @@ public class LoginScene {
         Hyperlink registerLink = new Hyperlink("Register");
         registerLink.setOnAction(e -> {
             try {
-                RegisterScene.showRegisterScreen(mainStage); // Call the showRegisterScreen method
+                RegisterScene.showRegisterScreen(mainStage);
             } catch (FileNotFoundException ex) {
                 // Handle the FileNotFoundException (e.g., show an error message)
                 ex.printStackTrace();

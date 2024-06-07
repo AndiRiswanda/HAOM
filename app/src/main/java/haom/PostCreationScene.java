@@ -22,7 +22,7 @@ public class PostCreationScene extends BaseScene {
 
     public PostCreationScene(Stage stage, String username) {
         super(stage, username);
-        this.genresList = FXCollections.observableArrayList("Bantuan Kecil", "Kebutuhan\nKomunitas", "Masalah Pribadi"); // Add your genres here
+        this.genresList = FXCollections.observableArrayList("Bantuan Kecil", "Kebutuhan\nKomunitas", "Masalah Pribadi"); // tambahkan genre disini
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PostCreationScene extends BaseScene {
         postButton.setOnAction(e -> {
             PostInfo post = new PostInfo(genreComboBox.getValue(), titleField.getText(), descriptionArea.getText(), ImagePath);
             PostDisplayScene.addPost(post);
-            // Clear the fields after posting
+            // clear
             genreComboBox.setValue(null);
             titleField.clear();
             descriptionArea.clear();
