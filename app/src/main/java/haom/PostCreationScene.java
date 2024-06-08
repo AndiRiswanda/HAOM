@@ -59,7 +59,13 @@ public class PostCreationScene extends BaseScene {
         Button postButton = new Button("Post");
         postButton.setStyle("-fx-background-color: #6a0dad; -fx-text-fill: white;");
         postButton.setOnAction(e -> {
-            PostInfo post = new PostInfo(genreComboBox.getValue(), titleField.getText(), descriptionArea.getText(), ImagePath);
+            PostInfo post = new PostInfo(
+                titleField.getText(),
+                genreComboBox.getValue(),
+                descriptionArea.getText(),
+                ImagePath,
+                0 // Initial help points
+            );
             PostDisplayScene.addPost(post);
             // clear
             genreComboBox.setValue(null);

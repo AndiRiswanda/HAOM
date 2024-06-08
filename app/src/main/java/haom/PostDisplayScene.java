@@ -51,9 +51,10 @@ public class PostDisplayScene extends BaseScene {
                     Label postTitleLabel = new Label(item.getTitle());
                     Label genreLabel = new Label("Genre: " + item.getGenre());
                     Label descriptionLabel = new Label("Description: " + item.getDescription());
+                    Label helpPointsLabel = new Label("Help Points: " + item.getHelpPoints()); // Display help points
 
                     VBox textInfo = new VBox(5);
-                    textInfo.getChildren().addAll(postTitleLabel, genreLabel, descriptionLabel);
+                    textInfo.getChildren().addAll(postTitleLabel, genreLabel, descriptionLabel, helpPointsLabel);
 
                     postBox.getChildren().addAll(imageView, textInfo);
                     setGraphic(postBox);
@@ -82,7 +83,8 @@ public class PostDisplayScene extends BaseScene {
                         selectedPost.getTitle(), 
                         selectedPost.getGenre(), 
                         selectedPost.getDescription(), 
-                        selectedPost.getImageURL()
+                        selectedPost.getImageURL(),
+                        selectedPost // Pass the post object to HelpScene
                     );
                     helpScene.show();
                 } catch (Exception ex) {
@@ -105,8 +107,8 @@ public class PostDisplayScene extends BaseScene {
     }
 
     public static void addPost(PostInfo post) {
-        System.out.println("Adding post: " + post);
         postsList.add(post);
         DatabaseConnection.savePost(post);
     }
+
 }

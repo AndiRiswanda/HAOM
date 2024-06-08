@@ -1,6 +1,7 @@
 package haom;
 
 import controller.UserController;
+import config.DatabaseConnection;
 import haom.MainScene.BaseScene;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,13 +22,15 @@ public class HelpScene extends BaseScene {
     private String genre;
     private String description;
     private String picPath;
+    private PostInfo post;
 
-    public HelpScene(Stage stage, String username, String title, String genre, String description, String picPath) {
+    public HelpScene(Stage stage, String username, String title, String genre, String description, String picPath, PostInfo post) {
         super(stage, username);
         this.title = title;
         this.genre = genre;
         this.description = description;
         this.picPath = picPath;
+        this.post = post;
     }
 
     @Override
@@ -50,8 +53,10 @@ public class HelpScene extends BaseScene {
         helpButton.setStyle("-fx-background-color: #6a0dad; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10px 20px;");
         helpButton.setOnAction(e -> {
             UserController.incrementHaomicPoints(username);
-            System.out.println("Help button clicked! Haomic point added.");
-            CustomAlert.showCustomAlert(AlertType.INFORMATION,"Success", "1 Haomic point has been added.");
+            DatabaseConnection.incrementPostHelpPoints(post);
+            post.setHelpPoints(post.getHelpPoints() + 1); // Update help points locally
+            System.out.println("Help button clicked! Haomic point and help point added.");
+            CustomAlert.showCustomAlert(AlertType.INFORMATION,"Success", "1 Haomic point and\n1 help point have been added.");
         });
 
         Button backButton = new Button("Back");
@@ -61,6 +66,7 @@ public class HelpScene extends BaseScene {
         HBox buttonsBox = new HBox(20);
         buttonsBox.setAlignment(Pos.CENTER);
         buttonsBox.getChildren().addAll(helpButton, backButton);
+
 
         VBox contentBox = new VBox(20);
         contentBox.setPadding(new Insets(20));

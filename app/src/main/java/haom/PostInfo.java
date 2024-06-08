@@ -6,12 +6,22 @@ public class PostInfo {
     private String title;
     private String description;
     private String imageURL;
+    private int helpPoints;
 
-    public PostInfo(String genre, String title, String description, String imageURL) {
-        this.genre = genre;
+    public PostInfo(String title, String genre, String description, String imageURL, int helpPoints) {
         this.title = title;
+        this.genre = genre;
         this.description = description;
         this.imageURL = imageURL;
+        this.helpPoints = helpPoints;
+    }
+
+    public PostInfo(String title, String genre, String description, String imageURL) {
+        this.title = title;
+        this.genre = genre;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.helpPoints = 0;
     }
 
     public String getGenre() {
@@ -28,6 +38,14 @@ public class PostInfo {
 
     public String getImageURL() {
         return imageURL;
+    }
+
+    public int getHelpPoints() {
+        return helpPoints;
+    }
+
+    public void setHelpPoints(int helpPoints) { 
+        this.helpPoints = helpPoints; 
     }
 }
 

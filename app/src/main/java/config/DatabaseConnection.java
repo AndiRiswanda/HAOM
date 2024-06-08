@@ -29,17 +29,18 @@ public class DatabaseConnection {
     public static ObservableList<PostInfo> loadPosts() {
         ObservableList<PostInfo> posts = FXCollections.observableArrayList();
         String sql = "SELECT * FROM posts";
-
+    
         try (Connection conn = connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-
+    
             while (rs.next()) {
                 PostInfo post = new PostInfo(
                         rs.getString("title"),
                         rs.getString("genre"),
                         rs.getString("description"),
-                        rs.getString("imageURL")
+                        rs.getString("imageURL"),
+                        rs.getInt("helpPoints")
                 );
                 posts.add(post);
             }
@@ -48,6 +49,7 @@ public class DatabaseConnection {
         }
         return posts;
     }
+    
     
     public static void createNewTable() {
         // SQL statement for creating a new table
@@ -59,13 +61,14 @@ public class DatabaseConnection {
                 + " haomicpoint INTEGER DEFAULT 0,\n"
                 + " profile_image_path TEXT DEFAULT '/PicAsset/userProfile.png'\n"
                 + ");";
-
+    
         String postTable = "CREATE TABLE IF NOT EXISTS posts (\n"
                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,\n"
                 + " title TEXT NOT NULL,\n"
                 + " genre TEXT NOT NULL,\n"
                 + " description TEXT NOT NULL,\n"
-                + " imageURL TEXT NOT NULL\n"
+                + " imageURL TEXT NOT NULL,\n"
+                + " helpPoints INTEGER DEFAULT 0\n"
                 + ");";
         
         try (Connection conn = connect();
@@ -100,8 +103,26 @@ public class DatabaseConnection {
     }
 
     public static void savePost(PostInfo post) {
-        String sql = "INSERT INTO posts(title, genre, description, imageURL) VALUES(?, ?, ?, ?)";
+        String sql = "INSERT INTO posts(title, genre, description, imageURL, helpPoints) VALUES(?, ?, ?, ?, ?)";
+    
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, post.getTitle());
+            pstmt.setString(2, post.getGenre());
+            pstmt.setString(3, post.getDescription());
+            pstmt.setString(4, post.getImageURL());
+            pstmt.setInt(5, post.getHelpPoints());
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
+    public static void incrementPostHelpPoints(PostInfo post) {
+        String sql = "UPDATE posts SET helpPoints = helpPoints + 1 WHERE title = ? AND genre = ? AND description = ? AND imageURL = ?";
+    
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
