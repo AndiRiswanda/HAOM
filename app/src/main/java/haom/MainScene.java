@@ -61,15 +61,7 @@ public class MainScene {
         Button btn3 = new Button("LeaderBoard");
         btn3.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
 
-        Button logoutButton = new Button("Logout");
-        logoutButton.setId("logout-button");
-        logoutButton.setOnAction(e -> {
-            try {
-                LoginScene.showLoginScreen(mainStage);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
+
 
         btn1.setPrefSize(200, 100);
         btn2.setPrefSize(200, 200);
@@ -90,9 +82,6 @@ public class MainScene {
         });
 
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().add(logoutButton);
-        StackPane.setAlignment(logoutButton, Pos.BOTTOM_RIGHT);
-        StackPane.setMargin(logoutButton, new Insets(0, 0, -115, -35)); 
         GridPane buttonGrid = new GridPane();
         buttonGrid.setAlignment(Pos.CENTER);
         buttonGrid.setVgap(20);

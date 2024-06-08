@@ -140,30 +140,22 @@ public class RegisterScene {
         rectangle.setFill(Color.TRANSPARENT);
 
 
-        Button exitButton = new Button("Exit");
-        exitButton.setOnAction(e -> Platform.exit());
-        exitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
-
-        HBox exitButtonBox = new HBox(exitButton);
-        exitButtonBox.setAlignment(Pos.BOTTOM_RIGHT);
-        exitButtonBox.setPadding(new Insets(10));
-
 
         Circle circle1 = new Circle(250, Color.web("#6a0dad")); // Create purple circle
         Circle circle2 = new Circle(250, Color.web("#6a0dad")); // Create purple circle
         Circle circle3 = new Circle(150, Color.web("#6a0dad")); // Create purple circle
 
-        Text alreadyHaveAnAccount = new Text("Already have an account?           here");
+        Text alreadyHaveAnAccount = new Text("Already have an account?                   ");
         alreadyHaveAnAccount.setFill(Color.WHITE);
         // Create clickable hyperlink for "Login"
-        Hyperlink loginLink = new Hyperlink(" Login");
+        Hyperlink loginLink = new Hyperlink("          Login here");
         loginLink.setOnAction(e -> { 
             LoginScene.showLoginScreen(mainStage); // Call the showloginscreen method
         });
         loginLink.getStyleClass().add("login-register-link"); 
         // StackPane for Layering (background, form, images, text)
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, registerBox, imageView1, registerText, circle1, circle2, circle3, alreadyHaveAnAccount, loginLink,exitButton);
+        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, registerBox, imageView1, registerText, circle1, circle2, circle3, alreadyHaveAnAccount, loginLink);
         // ... (Set margins for elements in StackPane as needed)
         StackPane.setMargin(haomText1, new Insets(0, 1250, 720, 0));
         StackPane.setMargin(haomText2, new Insets(0, 1250, 660, 0));
@@ -176,7 +168,6 @@ public class RegisterScene {
         StackPane.setMargin(circle3, new Insets(390, 0, 280, -1000 - 60));
         StackPane.setMargin(alreadyHaveAnAccount, new Insets(450, 0, 0, 0)); 
         StackPane.setMargin(loginLink, new Insets(450, -110, 0, 0)); 
-        StackPane.setMargin(exitButton, new Insets(550, -865, 0, 0)); 
         passwordField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

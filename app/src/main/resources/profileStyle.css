@@ -16,7 +16,7 @@
 }
 
 #change-image-button {
-    -fx-background-color: #6a0dad;
+    -fx-background-color: #320dad;
     -fx-text-fill: white; 
     -fx-font-size: 8px; 
     -fx-translate-x: 40;
@@ -24,7 +24,7 @@
 }
 
 #delete-image-button {
-    -fx-background-color: #6a0dad;
+    -fx-background-color: #ad0d0d;
     -fx-text-fill: white; 
     -fx-font-size: 8px; 
     -fx-translate-x: -40;

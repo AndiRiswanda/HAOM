@@ -2,12 +2,14 @@ package haom;
 
 import java.io.File;
 import java.util.Map;
-
 import controller.UserController;
 import haom.MainScene.BaseScene;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -75,11 +77,21 @@ public class ProfileScene extends BaseScene {
         deleteImageButton.setPrefWidth(70);
         deleteImageButton.setId("delete-image-button");
         deleteImageButton.setOnAction(e -> {
-        // Define default image path or null if there's no default image
-            String defaultImagePath = "D:/HAOMGIT/HAOM/app/src/main/resources/PicAsset/userProfile.png";
-            UserController.setProfileImagePath(username, defaultImagePath);
-            profileImageView.setImage(ImageLoader.loadProfileImage(defaultImagePath));
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Delete Profile Picture Confirmation");
+            alert.setHeaderText("Are you sure you want to delete your profile picture?");
+            alert.setContentText("Press OK to delete or Cancel to keep the picture.");
+        
+            java.util.Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Define default image path or null if there's no default image
+                String defaultImagePath = "D:/HAOMGIT/HAOM/app/src/main/resources/PicAsset/userProfile.png";
+                UserController.setProfileImagePath(username, defaultImagePath);
+                profileImageView.setImage(ImageLoader.loadProfileImage(defaultImagePath));
+            }
         });
+        
+        
 
         Button backButton = new Button("Back");
         backButton.setId("back-button");
@@ -105,9 +117,40 @@ public class ProfileScene extends BaseScene {
         Label pointsLabel = new Label("Haomic Points  : " + haomicPoints);
         pointsLabel.setId("points-label");
 
+        Button logoutButton = new Button("Logout");
+        logoutButton.setId("logout-button");
+        logoutButton.setOnAction(e -> {
+            try {
+                LoginScene.showLoginScreen(stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+    
+    logoutButton.setId("logout-button");
+    logoutButton.setOnAction(e -> {
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Logout Confirmation");
+    alert.setHeaderText("Are you sure you want to log out?");
+    alert.setContentText("Press OK to log out or Cancel to stay.");
+
+    java.util.Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                LoginScene.showLoginScreen(stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    });
+
+
         StackPane stackPane = new StackPane();
+        stackPane.getChildren().add(logoutButton);
         stackPane.setId("profile-scene-root");
         stackPane.getChildren().addAll(circle, rectangle, emailLabel, pointsLabel, titleLabel, profileImageView, changeImageButton, backButton, deleteImageButton);
+        StackPane.setAlignment(logoutButton, Pos.BOTTOM_CENTER);
         StackPane.setAlignment(circle, Pos.TOP_CENTER);
         StackPane.setAlignment(rectangle, Pos.CENTER);
         StackPane.setAlignment(emailLabel, Pos.CENTER);
@@ -115,7 +158,7 @@ public class ProfileScene extends BaseScene {
         StackPane.setAlignment(titleLabel, Pos.TOP_CENTER);
         StackPane.setAlignment(profileImageView, Pos.TOP_CENTER);
         StackPane.setAlignment(changeImageButton, Pos.CENTER);
-        StackPane.setAlignment(backButton, Pos.TOP_RIGHT);
+        StackPane.setAlignment(backButton, Pos.TOP_LEFT);
         StackPane.setAlignment(deleteImageButton, Pos.CENTER);
 
         Circle clip = new Circle(50, 50, 50); // Menggunakan radius yang sesuai dengan ukuran ImageView

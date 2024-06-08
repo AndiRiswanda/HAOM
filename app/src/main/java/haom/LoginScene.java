@@ -109,10 +109,10 @@ public class LoginScene {
         Circle circle2 = new Circle(250, Color.web("#6a0dad")); 
         Circle circle3 = new Circle(150, Color.web("#6a0dad")); 
 
-        Text dontHaveAccountText = new Text("Don't have an account?                here");
+        Text dontHaveAccountText = new Text("Don't have an account?                   ");
         dontHaveAccountText.setFill(Color.WHITE);
         // Create clickable hyperlink for "Register"
-        Hyperlink registerLink = new Hyperlink("Register");
+        Hyperlink registerLink = new Hyperlink("            Register here");
         registerLink.setOnAction(e -> {
             try {
                 RegisterScene.showRegisterScreen(mainStage);
@@ -123,14 +123,10 @@ public class LoginScene {
         });
         registerLink.getStyleClass().add("login-register-link");
 
-        Button exitButton = new Button("Exit");
-        exitButton.setOnAction(e -> Platform.exit());
-        exitButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white;");
-        usernameField.setOnAction(e -> passwordField.requestFocus());
-        passwordField.setOnAction(e -> loginButton.fire());
+    
         // StackPane to stack the loginBox and rectangle
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, loginBox, imageView1, loginText, circle1, circle2, circle3, dontHaveAccountText, registerLink,exitButton);
+        stackPane.getChildren().addAll(haomText1, haomText2, rectangle, loginBox, imageView1, loginText, circle1, circle2, circle3, dontHaveAccountText, registerLink);
         StackPane.setMargin(haomText1, new Insets(0, 1250, 720, 0));
         StackPane.setMargin(haomText2, new Insets(0, 1250, 660, 0));
         StackPane.setMargin(rectangle, new Insets(140, 0, 0, 0));
@@ -142,7 +138,6 @@ public class LoginScene {
         StackPane.setMargin(circle3, new Insets(390, 0, 280, -1000 - 60));
         StackPane.setMargin(dontHaveAccountText, new Insets(400, 0, 0, 0));
         StackPane.setMargin(registerLink, new Insets(401, -100, 0, 0));
-        StackPane.setMargin(exitButton, new Insets(550, -865, 0, 0)); 
 
         passwordField.textProperty().addListener(new ChangeListener<String>() {
             @Override

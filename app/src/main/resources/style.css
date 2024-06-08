@@ -21,7 +21,7 @@
 
 
 .list-view .scroll-bar:vertical {
-    -fx-opacity: 0; /* Hide vertical scroll bar */
+    -fx-opacity: 50; /* Hide vertical scroll bar */
 }
 
 .list-view .scroll-bar:horizontal {
