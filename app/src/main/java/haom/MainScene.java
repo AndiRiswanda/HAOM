@@ -54,26 +54,26 @@ public class MainScene {
         actionLabel
                 .setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: Impact; -fx-text-fill: white;");
 
-        Button btn1 = new Button("Make Challenge");
-        btn1.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
-        Button btn2 = new Button("Find Challenge");
-        btn2.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
-        Button btn3 = new Button("LeaderBoard");
-        btn3.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
+        Button makeAChallengeButton = new Button("Make Challenge");
+        makeAChallengeButton.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
+        Button findChallengeButton = new Button("Find Challenge");
+        findChallengeButton.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
+        Button leaderboardButton = new Button("LeaderBoard");
+        leaderboardButton.setStyle("-fx-font-size: 17px; -fx-font-family: Impact; -fx-font-weight: bold; -fx-text-fill: white");
 
 
 
-        btn1.setPrefSize(200, 100);
-        btn2.setPrefSize(200, 200);
-        btn3.setPrefSize(200, 100);
+        makeAChallengeButton.setPrefSize(200, 100);
+        findChallengeButton.setPrefSize(200, 200);
+        leaderboardButton.setPrefSize(200, 100);
 
 
         PostDisplayScene postDisplayScene = new PostDisplayScene(mainStage, username);
 
 
-        btn1.setOnAction(e -> new PostCreationScene(mainStage, username).show());
-        btn2.setOnAction(e -> postDisplayScene.show());
-        btn3.setOnAction(e -> {
+        makeAChallengeButton.setOnAction(e -> new PostCreationScene(mainStage, username).show());
+        findChallengeButton.setOnAction(e -> postDisplayScene.show());
+        leaderboardButton.setOnAction(e -> {
             try {
                 new LeaderBoard(mainStage, username).show();
             } catch (SQLException e1) {
@@ -86,9 +86,9 @@ public class MainScene {
         buttonGrid.setAlignment(Pos.CENTER);
         buttonGrid.setVgap(20);
         buttonGrid.setHgap(20);
-        buttonGrid.add(btn1, 0, 1);
-        buttonGrid.add(btn2, 1, 1);
-        buttonGrid.add(btn3, 2, 1);
+        buttonGrid.add(makeAChallengeButton, 0, 1);
+        buttonGrid.add(findChallengeButton, 1, 1);
+        buttonGrid.add(leaderboardButton, 2, 1);
 
 
         VBox actionBox = new VBox(10);
